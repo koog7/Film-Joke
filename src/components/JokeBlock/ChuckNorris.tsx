@@ -20,8 +20,6 @@ const ChuckNorris = () => {
         void fetchData();
     }, []);
 
-    console.log(data?.value)
-
     const btnClick = () => {
         setData({ value: '' });
         void fetchData();
