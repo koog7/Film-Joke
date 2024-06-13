@@ -15,12 +15,18 @@ const ToWatchMovie = () => {
         { id: 3, text: 'test' }
     ]);
 
+    const updater = (id: number, newText: string) => {
+        setMovieName(movieName.map(movie =>
+            movie.id === id ? { ...movie, text: newText } : movie
+        ));
+    };
+
     return (
         <div>
             <MovieForm  />
 
             {movieName.map((iter) => (
-                <MovieItem key={iter.id} text={iter.text} />
+                <MovieItem key={iter.id} text={iter.text} textChange={(newText) => updater(iter.id, newText)}/>
             ))}
         </div>
     );
