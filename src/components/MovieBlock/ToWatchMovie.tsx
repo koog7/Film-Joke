@@ -21,13 +21,24 @@ const ToWatchMovie = () => {
         ));
     };
 
-    return (
-        <div>
-            <MovieForm  />
+    const deleteById = (id:number) => {
+        for (let i = 0; i < movieName.length; i++) {
+            if (movieName[i].id === id) {
+                movieName.splice(i, 1);
+                break;
+            }
+        }
+        setMovieName([...movieName]);
+    }
 
-            {movieName.map((iter) => (
-                <MovieItem key={iter.id} text={iter.text} textChange={(newText) => updater(iter.id, newText)}/>
-            ))}
+    return (
+        <div >
+            <MovieForm  />
+            <div className={'card mb-3'}>
+                {movieName.map((iter) => (
+                    <MovieItem key={iter.id} id={iter.id} text={iter.text} textChange={(newText) => updater(iter.id, newText)} deleteTask={() => deleteById(iter.id)}/>
+                ))}
+            </div>
         </div>
     );
 };

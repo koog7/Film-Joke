@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 
 interface MovieProps {
+    id:number
     text: string;
     textChange: (newText: string) => void;
+    deleteTask: () => void;
 }
 
-const MovieItem: React.FC<MovieProps> = React.memo(({text, textChange}) => {
+const MovieItem: React.FC<MovieProps> = React.memo(({text, textChange , deleteTask}) => {
 
     const [inputText, setInputText] = useState(text);
 
@@ -22,10 +24,10 @@ const MovieItem: React.FC<MovieProps> = React.memo(({text, textChange}) => {
     };
 
     return (
-        <div>
-            <div>
-                <p>{text}</p>
-                <input value={inputText}  placeholder={text} onChange={trackingInput} />
+        <div className={'d-flex justify-content-center'}>
+            <div className={'p-3 w-50 d-flex'}>
+                <input className={'form-control w-100'} value={inputText}  placeholder={text} onChange={trackingInput} />
+                <button className={'btn btn-light border border-black ms-3'} onClick={deleteTask}>❌</button>
             </div>
         </div>
     );
