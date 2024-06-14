@@ -15,6 +15,8 @@ const MovieItem: React.FC<MovieProps> = React.memo(({text, textChange , deleteTa
         setInputText(text);
     }, [text]);
 
+    console.log(`Rendering MovieItem with text: ${text}`);
+
     const trackingInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newText = e.target.value;
         setInputText(newText);
@@ -29,6 +31,8 @@ const MovieItem: React.FC<MovieProps> = React.memo(({text, textChange , deleteTa
             </div>
         </div>
     );
+}, (prevProps, nextProps) => {
+    return  prevProps.text === nextProps.text;
 });
 
 export default MovieItem;
