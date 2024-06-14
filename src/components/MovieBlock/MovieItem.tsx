@@ -13,13 +13,11 @@ const MovieItem: React.FC<MovieProps> = React.memo(({text, textChange , deleteTa
 
     useEffect(() => {
         setInputText(text);
-        console.log(text);
     }, [text]);
 
     const trackingInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newText = e.target.value;
         setInputText(newText);
-        console.log(newText);
         textChange(newText);
     };
 

@@ -26,7 +26,7 @@ const ChuckNorris = () => {
     };
 
     return (
-        <fieldset className="card">
+        <fieldset className="card ">
             <legend>Chuck Norris daily joke</legend>
             <div className="card-body w-100 d-flex">
                 <p>{data?.value}</p>

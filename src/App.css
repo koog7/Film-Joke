@@ -3,3 +3,14 @@
   margin: 0 auto;
   padding: 2rem;
 }
+
+legend {
+  background-color: rgba(0, 0, 0, 0.06);
+  padding: 3px 6px;
+  text-align: center;
+}
+
+input {
+  margin: 0.4rem;
+}
+
