@@ -9,11 +9,7 @@ interface Props {
 
 const ToWatchMovie = () => {
 
-    const [movieName, setMovieName] = useState<Props[]>([
-        { id: 1, text: 'test1' },
-        { id: 2, text: 'test2' },
-        { id: 3, text: 'test' }
-    ]);
+    const [movieName, setMovieName] = useState<Props[]>([]);
 
     const updater = (id: number, newText: string) => {
         setMovieName(movieName.map(movie =>
@@ -29,12 +25,17 @@ const ToWatchMovie = () => {
             }
         }
         setMovieName([...movieName]);
-    }
+    };
+
+    const addMovieName = (name : string) => {
+        setMovieName([...movieName, {id: Math.random(), text: name}]);
+    };
 
     return (
-        <div >
-            <MovieForm  />
-            <div className={'card mb-3'}>
+        <div>
+            <MovieForm addTitle={addMovieName}/>
+            <h3 className={'text-center'}>To watch list:</h3>
+            <div className={'mb-3'}>
                 {movieName.map((iter) => (
                     <MovieItem key={iter.id} id={iter.id} text={iter.text} textChange={(newText) => updater(iter.id, newText)} deleteTask={() => deleteById(iter.id)}/>
                 ))}
